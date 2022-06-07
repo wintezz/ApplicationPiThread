@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ApplicationPiThread</string>
+    <string name="pi">3.14</string>
+    <string name="reset">Reset</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+</resources>
