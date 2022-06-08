@@ -8,7 +8,7 @@
     <ScrollView
         android:id="@+id/scrollA"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/green"
         android:fillViewport="true"
@@ -27,31 +27,6 @@
             android:text="@string/pi"
             android:textColor="@color/black"
             android:textSize="25sp" />
-    </ScrollView>
-
-    <ScrollView
-        android:id="@+id/scrollB"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@color/red"
-        android:fillViewport="true"
-        android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/textViewB"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:maxLines="100"
-            android:scrollbars="vertical"
-            android:text="@string/pi"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
-
     </ScrollView>
 
 </LinearLayout>

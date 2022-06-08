@@ -15,14 +15,9 @@ class FragmentA : Fragment() {
 
     private lateinit var binding: FragmentABinding
     private var resultOne = BigDecimal(3)
-    private var resultTwo = BigDecimal(4)
     private var counterOne: Double = 0.0
-    private var counterTwo: Double = 0.0
     private var showOne = ""
-    private var showTwo = ""
     private var formula: Double = 0.0
-    private var countTwo = 0
-    private var divider = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +27,6 @@ class FragmentA : Fragment() {
             .inflate(inflater, container, false)
 
         oneScreen()
-        twoScreen()
 
         return binding.root
     }
@@ -65,46 +59,10 @@ class FragmentA : Fragment() {
         threadOne.start()
     }
 
-    private fun twoScreen() {
-        val formulaTwo = Runnable {
-            Thread {
-                while (true) {
-                    counterTwo += 1
-                    if (countTwo % 2 == 0) {
-                        resultTwo -= (BigDecimal(4).divide(BigDecimal(divider + 2), 300, 0))
-
-                    } else {
-                        resultTwo += (BigDecimal(4).divide(BigDecimal(divider + 2), 300, 0))
-                    }
-
-                    showTwo = resultTwo.toString()
-                    divider += 2
-                    if (counterTwo % 1000 == 0.0) {
-                        val msg1 = handlerTwo.obtainMessage()
-                        msg1.obj = showTwo
-                        handlerTwo.sendMessage(msg1)
-                    }
-                    countTwo++
-                }
-
-            }.start()
-        }
-
-        val threadTwo = Thread(formulaTwo)
-        threadTwo.start()
-    }
-
     private var handlerOne: Handler = @SuppressLint("HandlerLeak")
     object : Handler() {
         override fun handleMessage(msgOneFormula: Message) {
             binding.textViewA.text = msgOneFormula.obj.toString()
-        }
-    }
-
-    private var handlerTwo: Handler = @SuppressLint("HandlerLeak")
-    object : Handler() {
-        override fun handleMessage(msgTwoFormula: Message) {
-            binding.textViewB.text = msgTwoFormula.obj.toString()
         }
     }
 
